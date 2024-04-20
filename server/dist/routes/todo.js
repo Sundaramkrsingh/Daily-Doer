@@ -80,13 +80,17 @@ todoRouter.put('/', (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
 }));
-todoRouter.get('/todos', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+todoRouter.get('/todos/:userId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const userId = Number(req.params.userId);
         const todos = yield prisma.todo.findMany({
+            where: { userId: userId },
             select: {
+                id: true,
                 title: true,
                 status: true,
-                priority: true
+                priority: true,
+                dueDate: true
             }
         });
         return res.status(200).json({

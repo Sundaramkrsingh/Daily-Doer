@@ -1,4 +1,4 @@
-import AppLogo from "./appLogo"
+import AppLogo from "./icons/appLogo"
 import { useRecoilValue, useSetRecoilState } from "recoil"
 import { userAtom } from "../store/atoms/user"
 import { Link, useNavigate } from "react-router-dom"
@@ -8,7 +8,7 @@ import { BACKEND_URL } from "../config"
 const AppBar = () => {
     const user = useRecoilValue(userAtom)
 
-    return <div className="sticky top-0 flex border-b-2 shadow-md bg-gradient-to-l from-red-100 to-sky-500 bg-gradient-to-r from-yellow-200">
+    return <div className="sticky top-0 flex border-b-2 shadow-md bg-gradient-to-l from-red-100 to-sky-500 bg-gradient-to-r from-yellow-200 w-screen">
         <div className="md:max-w-28 max-w-14 border-r cursor-pointer">
             <Link to={'/'}> <AppLogo /> </Link>
         </div> 
@@ -18,7 +18,7 @@ const AppBar = () => {
                 <AppBarContent text={"Contact"} />
                 <AppBarContent text={"About us"} />
             </div>
-            <div className="flex justify-end w-1/2 py-4 px-4">
+            <div className="flex justify-end w-1/2 py-4 px-6">
                 <Button text={user.email === ""? "signin": "signout"} />
             </div>
         </div>
@@ -45,7 +45,7 @@ const Button = ({ text }: {
         navigate('/')
     }
 
-    return <button type="button" className="pt-1 pb-1.5 px-4 bg-white hover:bg-slate-200 inline-flex items-center text-base subpixel-antialiased font-semibold rounded-lg border-2 border-sky-600 shadow-lg text-sky-500 hover:border-sky-700 hover:text-sky-700" onClick={text === "signin"? handleOnNotSignedIn: handleSignOut}>
+    return <button type="button" className="pt-0.5 pb-0.5 px-2 md:pt-1 md:pb-1.5 md:px-4 bg-white hover:bg-slate-200 inline-flex items-center text-sm md:text-base subpixel-antialiased font-semibold rounded-lg border-1 md:border-2 border-sky-600 shadow-lg text-sky-500 hover:border-sky-700 hover:text-sky-700" onClick={text === "signin"? handleOnNotSignedIn: handleSignOut}>
         { text } 
     </button>
 } 

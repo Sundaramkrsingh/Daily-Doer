@@ -10,7 +10,7 @@ const DatePicker = ({ onChange }: {
                     <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                 </svg>
             </div>
-            < input type="text" className="bg-gray-50 border border-sky-300 rounded-lg text-sm font-sans focus:border-sky-600 focus:ring-sky-600 focus:ring-1 hover:border-1.5 hover:shadow-sm hover:border-sky-600 focus:shadow-md outline-none block w-full ps-10 p-2.5" placeholder="Enter date" onChange={(e) => onChange(e.target.value)} />
+            < input type="text" className="bg-gray-50 border border-sky-300 rounded-lg text-sm font-sans focus:border-sky-600 focus:ring-sky-600 focus:ring-1 hover:border-1.5 hover:shadow-sm hover:border-sky-600 focus:shadow-md outline-none block w-full ps-10 p-2.5" placeholder="00-00-0000" onChange={(e) => onChange(e.target.value)} />
         </div>
     </div>    
 }

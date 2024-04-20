@@ -6,10 +6,10 @@ import AppBar from './components/appBar.tsx'
 import { RecoilRoot } from 'recoil'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
-    <RecoilRoot>
-      <AppBar />
-      <App />
-    </RecoilRoot>
-  </BrowserRouter>
+  <RecoilRoot>
+    <BrowserRouter>
+        <AppBar />
+        <App />
+    </BrowserRouter>
+  </RecoilRoot>
 )

@@ -4,7 +4,7 @@ import { BACKEND_URL } from "../config"
 import { useRecoilState } from "recoil"
 import { userAtom } from "../store/atoms/user"
 import { useNavigate } from "react-router-dom"
-import AppLogo from "../components/appLogo"
+import AppLogo from "../components/icons/appLogo"
 import TodoButton from "../components/buttons/TodoButton"
 
 const LandingPage = () => {

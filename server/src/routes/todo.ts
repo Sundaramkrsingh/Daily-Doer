@@ -75,13 +75,17 @@ todoRouter.put('/', async (req, res) => {
 })
 
 
-todoRouter.get('/todos', async (req, res) => {
+todoRouter.get('/todos/:userId', async (req, res) => {
     try {
+        const userId = Number(req.params.userId)
         const todos = await prisma.todo.findMany({
+            where: { userId: userId }, 
             select: {
+                id: true,
                 title: true,
                 status: true,
-                priority: true
+                priority: true,
+                dueDate: true
             }
         })
     
