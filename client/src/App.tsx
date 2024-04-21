@@ -6,6 +6,7 @@ import LandingPage from "./pages/landing"
 import AddTodo from "./pages/todoAdd"
 import TodoEdit from "./pages/todoEdit"
 import TodoView from "./pages/todoView"
+import About from "./pages/about"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
       <Route path="/todo/add" element={<AddTodo />} />
       <Route path="/todo/edit/:todoId" element={<TodoEdit />} />
       <Route path="/todo/view/:todoId" element={<TodoView />} />
+      <Route path="/about" element={<About />} />
       <Route path="*" element={<div>Not Found 404</div>} />
     </Routes>
   </>

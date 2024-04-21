@@ -22,19 +22,19 @@ const AuthSignup = () => {
             <div className="flex justify-center border rounded-lg shadow-lg border-sky-300 h-max w-7/12">
                 <div>
                     <div className="pt-4">
-                        <InputBox text={"name"} type={"text"} placeholder={"Bhupendra Jogi"} onChange={(val) => setSignupInputs((c) => ({
+                        <InputBox text={"name"} type={"text"} placeholder={"Bhupendra Jogi"} value={signupInputs.name} onChange={(val) => setSignupInputs((c) => ({
                             ...c, 
                             name: val
                         }))} />
                     </div>
                     <div>
-                        <InputBox text={"email"} type={"email"} placeholder={"bpjogi@gmail.com"} onChange={(val) => setSignupInputs((c) => ({
+                        <InputBox text={"email"} type={"email"} placeholder={"bpjogi@gmail.com"} value={signupInputs.email} onChange={(val) => setSignupInputs((c) => ({
                             ...c,
                             email: val
                         }))} />
                     </div>
                     <div>
-                        <InputBox text={"password"} type={"password"} placeholder={"*****************************"} onChange={(val) => setSignupInputs((c) => ({
+                        <InputBox text={"password"} type={"password"} placeholder={"*****************************"} value={signupInputs.password} onChange={(val) => setSignupInputs((c) => ({
                             ...c,
                             password:val
                         }))} />
@@ -43,7 +43,7 @@ const AuthSignup = () => {
                         <AuthButton text={"signup"} onClick={async() => {
                             try {
                                 const res = await axios.post(`${BACKEND_URL}/user/signup`, signupInputs)
-                                sessionStorage.setItem("user", res.data.user)
+                                sessionStorage.setItem("user", JSON.stringify(res.data.user))
                                 navigate('/')
                             } catch(e) {
                                 console.log(e)

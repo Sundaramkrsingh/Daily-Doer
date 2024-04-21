@@ -21,13 +21,13 @@ const AuthSignin = () => {
             <div className="flex justify-center border rounded-lg shadow-lg border-sky-300 h-max w-7/12">
                 <div>
                     <div className="pt-4">
-                        <InputBox text={"email"} type={"email"} placeholder={"bpjogi@gmail.com"} onChange={(val) => setSigninInputs((c) => ({
+                        <InputBox text={"email"} type={"email"} placeholder={"bpjogi@gmail.com"} value={signinInputs.email} onChange={(val) => setSigninInputs((c) => ({
                             ...c,
                             email: val
                         }))} />
                     </div>
                     <div>
-                        <InputBox text={"password"} type={"password"} placeholder={"*****************************"} onChange={(val) => setSigninInputs((c) => ({
+                        <InputBox text={"password"} type={"password"} placeholder={"*****************************"} value={signinInputs.password} onChange={(val) => setSigninInputs((c) => ({
                             ...c, 
                             password: val
                         }))} />

@@ -15,9 +15,15 @@ const AppBar = () => {
         </div> 
         <div className="flex w-full">
             <div className="flex md:w-1/2 sm:w-64 w-56 text-white">
-                <AppBarContent text={"Pricing"} />
-                <AppBarContent text={"Contact"} />
-                <AppBarContent text={"About us"} />
+                <AppBarContent text={"About us"} redirectPage={"about"} />
+                {
+                    user.email === ""? <div></div>:
+                    <AppBarContent text={"my todos"} redirectPage={"todos"} />                
+                }
+                {
+                    user.email === ""? <div></div>:
+                    <AppBarContent text={"Add Todo"} redirectPage={"todo/add"} />
+                }
             </div>
             <div className="flex justify-end w-1/2 py-4 px-6">
                 <Button text={user.email === ""? "signin": "signout"} setUser={setUser} />
@@ -52,10 +58,13 @@ const Button = ({ text, setUser }: {
     </button>
 } 
 
-const AppBarContent = ({ text }: {
+const AppBarContent = ({ text, redirectPage }: {
     text: string
+    redirectPage: string
 }) => {
-    return <div className="flex flex-col justify-center text-center font-semibold md:text-base text-xs subpixel-antialiased cursor-pointer hover:bg-sky-700 hover:border-b-4 w-1/3">
+    const navigate = useNavigate()
+
+    return <div onClick={() => navigate(`/${redirectPage}`)} className="flex flex-col justify-center text-center font-semibold md:text-base text-xs subpixel-antialiased cursor-pointer hover:bg-sky-700 hover:border-b-4 w-1/3">
         { text }
     </div>
 }
