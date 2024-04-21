@@ -46,27 +46,27 @@ const AddTodo = () => {
                     New Todo
                 </div>
 
-                <InputBox text={"title"} type={"text"} placeholder={""} value={""}onChange={(val) => setTodo(c => ({
+                <InputBox text={"title"} type={"text"} placeholder={""} value={todo.title}onChange={(val) => setTodo(c => ({
                     ...c,
                     title: val
                 }))} />
 
-                <InputBox text={"description"} type={"text"} placeholder={""} value={""} onChange={(val) => setTodo(c => ({
+                <InputBox text={"description"} type={"text"} placeholder={""} value={todo.description} onChange={(val) => setTodo(c => ({
                     ...c,
                     description: val
                 }))} />
 
-                <SelectBox label={"Status"} options={["Pending", "Started", "Done"]} value={""} onChange={(val) => setTodo((c) => ({
+                <SelectBox label={"Status"} options={["Pending", "Started", "Done"]} value={todo.status} onChange={(val) => setTodo((c) => ({
                     ...c,
                     status: val
                 }))} />
 
-                <SelectBox label={"Priority"} options={["High", "Moderate", "Normal"]} value={""} onChange={(val) => setTodo((c) => ({
+                <SelectBox label={"Priority"} options={["High", "Moderate", "Normal"]} value={todo.priority} onChange={(val) => setTodo((c) => ({
                     ...c,
                     priority: val
                 }))} />
 
-                <DatePicker value={""} onChange={(val) => setTodo((c) => ({
+                <DatePicker value={todo.dueDate} onChange={(val) => setTodo((c) => ({
                     ...c,
                     dueDate: val
                 }))} />
