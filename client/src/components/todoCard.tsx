@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom"
 import DeleteIcon from "./icons/deleteIcon"
 import EditIcon from "./icons/editIcon"
 import ViewIcon from "./icons/viewIcon"
@@ -14,7 +13,6 @@ const TodoCard = ({ id, title, status, priority, dueDate }: {
     priority: string,
     dueDate: string
 }) => {
-    const navigate = useNavigate()
     const [todos, setTodos] = useRecoilState(todosAtom)
 
     const colors: Map<string, string> = new Map()
@@ -25,7 +23,7 @@ const TodoCard = ({ id, title, status, priority, dueDate }: {
     colors.set("Moderate", "yellow-300")
     colors.set("Normal", "green-400")
 
-    return <div className="flex flex-col items-center subpixel-antialiased border-4 border-yellow-100 hover:border-cyan-300 shadow-2xl shadow-sky-200 hover:shadow-sky-400 h-max w-56 ml-6 my-7 rounded-xl bg-">
+    return <div className="flex flex-col items-center subpixel-antialiased border-4 border-yellow-100 hover:border-cyan-300 shadow-2xl shadow-sky-200 hover:shadow-sky-400 h-max w-56 ml-6 my-7 rounded-2xl">
         <div className="w-full rounded-xl bg-white">
             <div className="border-b">
                 <Heading text={"title"} />
@@ -61,11 +59,11 @@ const TodoCard = ({ id, title, status, priority, dueDate }: {
             </div>
 
             <div className="grid grid-cols-3 h-10 cursor-pointer">
-                <div className="flex justify-center items-center border-r hover:bg-gray-300 rounded-bl-xl text-slate-400" onClick={() => navigate('/todo')}>
+                <div className="flex justify-center items-center border-r hover:bg-gray-300 rounded-bl-xl text-slate-400" onClick={() => }>
                     <ViewIcon />
                 </div>
                     
-                <div className="flex justify-center items-center border-r hover:bg-gray-300 text-slate-400" onClick={() => navigate('/todo/edit')}>
+                <div className="flex justify-center items-center border-r hover:bg-gray-300 text-slate-400" onClick={() => }>
                     <EditIcon />
                 </div>
 

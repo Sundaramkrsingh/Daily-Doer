@@ -22,9 +22,7 @@ const Todo = () => {
             .catch(err => console.log(err)) 
     }, [])
 
-    return <div>
-        {user.name}
-    </div>
+    return 
 }
 
 export default Todo

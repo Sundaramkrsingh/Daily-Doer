@@ -118,7 +118,7 @@ todoRouter.get('/:id', async (req, res) => {
         })
 
         return res.status(200).json({
-            id: todo?.id
+            todo
         })
     } catch(e) {
         console.log(e)

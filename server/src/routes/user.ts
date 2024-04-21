@@ -22,9 +22,9 @@ userRouter.use(session({
 }))
 
 userRouter.get('/', (req, res) => {
-    if(req.session.user) {
+    if(req.session && req.session.user) {
         return res.json({
-            valid: true, user: req.session.user
+            valid: true
         })
     }
     
@@ -72,7 +72,12 @@ userRouter.post('/signup', async (req, res) => {
 
         res.status(200)
         return res.json({
-            Signup: true
+            Signup: true,
+            user: {
+                userId: user.id,
+                email: user.email,
+                name: user.name
+            }
         })
     } catch(e) {
         console.log(e)
@@ -118,7 +123,12 @@ userRouter.post('/signin', async (req, res) => {
         }
 
         return res.status(200).json({
-            Signin: true
+            Signin: true,
+            user: {
+                userId: user.id,
+                email: user.email,
+                name: user.name
+            }
         })
     } catch(e) {
         console.log(e) 
@@ -130,8 +140,8 @@ userRouter.post('/signin', async (req, res) => {
 
 
 userRouter.get('/signout', (req, res) => {
-    res.clearCookie('connect.sid', { path: '/' });
-    res.redirect('/api/v1/user/');
+    res.clearCookie('connect.sid', { path: '/' })
+    res.redirect('/api/v1/user/')
 })
 
 export default userRouter 

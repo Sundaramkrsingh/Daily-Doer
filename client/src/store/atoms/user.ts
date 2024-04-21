@@ -1,11 +1,10 @@
 import { atom } from "recoil";
 
+const userString = sessionStorage.getItem("user")
+const defaultString = JSON.stringify({ userId: 0, name: ""})
+const user = JSON.parse(userString || defaultString)
+
 export const userAtom = atom({
     key: "userAtom",
-    default: {
-        userId: 0,
-        name: "",
-        email: ""
-    }
+    default: user
 })
-

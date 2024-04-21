@@ -42,7 +42,8 @@ const AuthSignup = () => {
                     <div className="py-6">
                         <AuthButton text={"signup"} onClick={async() => {
                             try {
-                                await axios.post(`${BACKEND_URL}/user/signup`, signupInputs)
+                                const res = await axios.post(`${BACKEND_URL}/user/signup`, signupInputs)
+                                sessionStorage.setItem("user", res.data.user)
                                 navigate('/')
                             } catch(e) {
                                 console.log(e)

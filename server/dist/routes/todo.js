@@ -120,7 +120,7 @@ todoRouter.get('/:id', (req, res) => __awaiter(void 0, void 0, void 0, function*
             }
         });
         return res.status(200).json({
-            id: todo === null || todo === void 0 ? void 0 : todo.id
+            todo
         });
     }
     catch (e) {

@@ -32,9 +32,9 @@ userRouter.use((0, express_session_1.default)({
     }
 }));
 userRouter.get('/', (req, res) => {
-    if (req.session.user) {
+    if (req.session && req.session.user) {
         return res.json({
-            valid: true, user: req.session.user
+            valid: true
         });
     }
     return res.json({
@@ -74,7 +74,12 @@ userRouter.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, funct
         };
         res.status(200);
         return res.json({
-            Signup: true
+            Signup: true,
+            user: {
+                userId: user.id,
+                email: user.email,
+                name: user.name
+            }
         });
     }
     catch (e) {
@@ -115,7 +120,12 @@ userRouter.post('/signin', (req, res) => __awaiter(void 0, void 0, void 0, funct
             email: user.email
         };
         return res.status(200).json({
-            Signin: true
+            Signin: true,
+            user: {
+                userId: user.id,
+                email: user.email,
+                name: user.name
+            }
         });
     }
     catch (e) {

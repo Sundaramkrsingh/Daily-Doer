@@ -1,12 +1,12 @@
 import AppLogo from "./icons/appLogo"
-import { useRecoilValue, useSetRecoilState } from "recoil"
-import { userAtom } from "../store/atoms/user"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
+import { useRecoilState } from "recoil"
+import { userAtom } from "../store/atoms/user"
 
 const AppBar = () => {
-    const user = useRecoilValue(userAtom)
+    const [user, setUser] = useRecoilState(userAtom)
 
     return <div className="sticky top-0 flex border-b-2 shadow-md bg-gradient-to-l from-red-100 to-sky-500 bg-gradient-to-r from-yellow-200 w-screen">
         <div className="md:max-w-28 max-w-14 border-r cursor-pointer">
@@ -19,29 +19,30 @@ const AppBar = () => {
                 <AppBarContent text={"About us"} />
             </div>
             <div className="flex justify-end w-1/2 py-4 px-6">
-                <Button text={user.email === ""? "signin": "signout"} />
+                <Button text={user.email === ""? "signin": "signout"} setUser={setUser} />
             </div>
         </div>
     </div>  
 }
 
-const Button = ({ text }: {
+const Button = ({ text, setUser }: {
     text: string,
+    setUser: React.Dispatch<any>
 }) => {
     const navigate = useNavigate()
-    const setUserAtom = useSetRecoilState(userAtom)
 
     function handleOnNotSignedIn() {
         navigate('/signin')
     }
 
     async function handleSignOut() {
-        setUserAtom({
+        setUser({
             userId: 0,
-            email: "",
-            name: ""
+            name: "",
+            email: ""
         })
         await axios.get(`${BACKEND_URL}/user/signout`)
+        sessionStorage.clear()
         navigate('/')
     }
 

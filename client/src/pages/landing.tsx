@@ -1,30 +1,30 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { BACKEND_URL } from "../config"
-import { useRecoilState } from "recoil"
-import { userAtom } from "../store/atoms/user"
-import { useNavigate } from "react-router-dom"
 import AppLogo from "../components/icons/appLogo"
 import TodoButton from "../components/buttons/TodoButton"
+import { useRecoilState } from "recoil"
+import { userAtom } from "../store/atoms/user"
 
 const LandingPage = () => {
     const [user, setUser] = useRecoilState(userAtom)
-    const navigate = useNavigate()
-
     axios.defaults.withCredentials = true
 
     useEffect(() => {
         axios.get(`${BACKEND_URL}/user/`)
             .then(res => {
                 if(res.data.valid) {
-                    setUser(res.data.user)
-                }
-                else {
+                   const userString = sessionStorage.getItem("user")
+                   const defaultString = JSON.stringify({ userId: 0, name: ""})
+                   const userData = JSON.parse(userString || defaultString)
+                   setUser(userData)
+                } else {
                     setUser({
                         userId: 0,
                         name: "",
                         email: ""
                     })
+                    sessionStorage.clear()
                 }
             })
             .catch(err => console.log(err)) 

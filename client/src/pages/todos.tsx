@@ -12,15 +12,24 @@ const Todos = () => {
     const [todos, setTodos] = useRecoilState(todosAtom)
     const navigate = useNavigate() 
     axios.defaults.withCredentials = true
-    console.log(user)
+    // console.log(user)
 
     useEffect(() => {
         axios.get(`${BACKEND_URL}/user/`)
             .then(res => {
                 if(!res.data.valid) {
                     navigate('/signin')
+                    setUser({
+                        userId: 0,
+                        name: "",
+                        email: ""
+                    })
+                    sessionStorage.clear()
                 } else {
-                    setUser(res.data.user)
+                    const userString = sessionStorage.getItem("user")
+                    const defaultString = JSON.stringify({ userId: 0, name: ""})
+                    const userData = JSON.parse(userString || defaultString)
+                    setUser(userData)
                 }
             })
             .catch(err => console.log(err))
@@ -35,7 +44,7 @@ const Todos = () => {
     }, [user])
 
     return (
-        <div className="inline-grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 h-max w-screen bg-gradient-to-l from-red-100 to-sky-100 bg-gradient-to-r from-yellow-100">
+        <div className="inline-grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 min-h-screen w-screen bg-gradient-to-l from-red-100 to-sky-100 bg-gradient-to-r from-yellow-100">
             { todos.map((todo: { id: number, title: string, status: string, priority: string, dueDate: string }) => (
                 <TodoCard key={todo.id} id={todo.id} title={todo.title} status={todo.status} priority={todo.priority} dueDate={todo.dueDate} />
             )) }
