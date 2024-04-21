@@ -24,7 +24,6 @@ export const createTodoInput = z.object({
 })
 
 export const updateTodoInput = z.object({
-    userId: z.number(),
     todoId: z.number(),
     title: z.string().max(30),
     description: z.string().max(80),
