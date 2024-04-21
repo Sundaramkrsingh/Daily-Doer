@@ -5,6 +5,7 @@ import axios from "axios"
 import { BACKEND_URL } from "../config"
 import { useRecoilState } from "recoil"
 import { todosAtom } from "../store/atoms/todos"
+import { useNavigate } from "react-router-dom"
 
 const TodoCard = ({ id, title, status, priority, dueDate }: {
     id: number,
@@ -13,6 +14,7 @@ const TodoCard = ({ id, title, status, priority, dueDate }: {
     priority: string,
     dueDate: string
 }) => {
+    const navigate = useNavigate()
     const [todos, setTodos] = useRecoilState(todosAtom)
 
     const colors: Map<string, string> = new Map()
@@ -59,11 +61,15 @@ const TodoCard = ({ id, title, status, priority, dueDate }: {
             </div>
 
             <div className="grid grid-cols-3 h-10 cursor-pointer">
-                <div className="flex justify-center items-center border-r hover:bg-gray-300 rounded-bl-xl text-slate-400" onClick={() => }>
+                <div className="flex justify-center items-center border-r hover:bg-gray-300 rounded-bl-xl text-slate-400" onClick={() => {
+                    navigate(`/todo/view/${id}`)
+                }}>
                     <ViewIcon />
                 </div>
                     
-                <div className="flex justify-center items-center border-r hover:bg-gray-300 text-slate-400" onClick={() => }>
+                <div className="flex justify-center items-center border-r hover:bg-gray-300 text-slate-400" onClick={() => {
+                    navigate(`/todo/edit/${id}`)
+                }}>
                     <EditIcon />
                 </div>
 
