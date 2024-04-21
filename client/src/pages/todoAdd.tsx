@@ -46,27 +46,27 @@ const AddTodo = () => {
                     New Todo
                 </div>
 
-                <InputBox text={"title"} type={"text"} placeholder={""} onChange={(val) => setTodo(c => ({
+                <InputBox text={"title"} type={"text"} placeholder={""} value={""}onChange={(val) => setTodo(c => ({
                     ...c,
                     title: val
                 }))} />
 
-                <InputBox text={"description"} type={"text"} placeholder={""} onChange={(val) => setTodo(c => ({
+                <InputBox text={"description"} type={"text"} placeholder={""} value={""} onChange={(val) => setTodo(c => ({
                     ...c,
                     description: val
                 }))} />
 
-                <SelectBox label={"Status"} options={["Pending", "Started", "Done"]} onChange={(val) => setTodo((c) => ({
+                <SelectBox label={"Status"} options={["Pending", "Started", "Done"]} value={""} onChange={(val) => setTodo((c) => ({
                     ...c,
                     status: val
                 }))} />
 
-                <SelectBox label={"Priority"} options={["High", "Moderate", "Normal"]} onChange={(val) => setTodo((c) => ({
+                <SelectBox label={"Priority"} options={["High", "Moderate", "Normal"]} value={""} onChange={(val) => setTodo((c) => ({
                     ...c,
                     priority: val
                 }))} />
 
-                <DatePicker onChange={(val) => setTodo((c) => ({
+                <DatePicker value={""} onChange={(val) => setTodo((c) => ({
                     ...c,
                     dueDate: val
                 }))} />
@@ -74,7 +74,7 @@ const AddTodo = () => {
                     <AuthButton text={"Add Todo"} onClick={async () => {
                         try {
                             const res = await axios.post(`${BACKEND_URL}/todo/`, todo)
-                            if(res) {
+                            if(res.data.id) {
                                 navigate('/todos')
                             }
                         } catch(e) {
