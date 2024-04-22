@@ -1,7 +1,6 @@
 import axios from "axios"
 import { useEffect } from "react"
 import { BACKEND_URL } from "../config"
-import AppLogo from "../components/icons/appLogo"
 import TodoButton from "../components/buttons/TodoButton"
 import { useRecoilState } from "recoil"
 import { userAtom } from "../store/atoms/user"
@@ -31,22 +30,22 @@ const LandingPage = () => {
             .catch(err => console.log(err)) 
     }, [])
 
-    return <div className="grid grid-cols-2 h-screen text-sky-500 text-3xl font-extrabold">
+    return <div className="grid grid-rows-2 h-screen text-sky-500 text-3xl font-extrabold my-4">
         <div>
             <div className="flex flex-col justify-center items-center text-center h-1/2">
                 Be productive, Be more with Daily Doer
                 <div className="text-sm text-gray-400 font-semibold mt-10">Organize all your tasks easily, increase your productivity</div>
             </div>
+            <div className="flex flex-col justify-center items-center my-6">
+                {   
+                    user.userId === 0? <div></div>: 
+                    <div className="pb-10">
+                        <TodoButton text={"My Todos"} redirectPage={"todos"} />
+                    </div>
+                }
+                Hello! { user.name }
+            </div>
             <Design />
-        </div>
-        <div className="flex flex-col justify-center items-center">
-            {   
-                user.userId === 0? <div></div>: 
-                <div className="pb-10">
-                    <TodoButton text={"My Todos"} redirectPage={"todos"} />
-                </div>
-            }
-            Hello! { user.name }
         </div>
     </div>
 }
