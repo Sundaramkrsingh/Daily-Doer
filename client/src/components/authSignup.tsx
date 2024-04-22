@@ -22,19 +22,19 @@ const AuthSignup = () => {
             <div className="flex justify-center border rounded-lg shadow-lg border-sky-300 h-max w-7/12">
                 <div>
                     <div className="pt-4">
-                        <InputBox text={"name"} type={"text"} placeholder={"Bhupendra Jogi"} value={signupInputs.name} onChange={(val) => setSignupInputs((c) => ({
+                        <InputBox text={"name"} type={"text"} placeholder={""} value={signupInputs.name} onChange={(val) => setSignupInputs((c) => ({
                             ...c, 
                             name: val
                         }))} />
                     </div>
                     <div>
-                        <InputBox text={"email"} type={"email"} placeholder={"bpjogi@gmail.com"} value={signupInputs.email} onChange={(val) => setSignupInputs((c) => ({
+                        <InputBox text={"email"} type={"email"} placeholder={"xyz@gmail.com"} value={signupInputs.email} onChange={(val) => setSignupInputs((c) => ({
                             ...c,
                             email: val
                         }))} />
                     </div>
                     <div>
-                        <InputBox text={"password"} type={"password"} placeholder={"*****************************"} value={signupInputs.password} onChange={(val) => setSignupInputs((c) => ({
+                        <InputBox text={"password"} type={"password"} placeholder={"pass@123"} value={signupInputs.password} onChange={(val) => setSignupInputs((c) => ({
                             ...c,
                             password:val
                         }))} />

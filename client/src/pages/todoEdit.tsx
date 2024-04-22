@@ -15,7 +15,8 @@ const TodoEdit = () => {
     const navigate = useNavigate()
     const { todoId } = useParams()
     const [todo, setTodo] = useRecoilState(curTodoAtom)
-
+    axios.defaults.withCredentials = true
+    
     useEffect(() => {
         axios.get(`${BACKEND_URL}/user/`)
             .then(res => {

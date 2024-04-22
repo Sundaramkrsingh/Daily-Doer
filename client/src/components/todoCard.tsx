@@ -6,6 +6,7 @@ import { BACKEND_URL } from "../config"
 import { useRecoilState } from "recoil"
 import { todosAtom } from "../store/atoms/todos"
 import { useNavigate } from "react-router-dom"
+import { colors } from "../store/utils/colors"
 
 const TodoCard = ({ id, title, status, priority, dueDate }: {
     id: number,
@@ -16,14 +17,6 @@ const TodoCard = ({ id, title, status, priority, dueDate }: {
 }) => {
     const navigate = useNavigate()
     const [todos, setTodos] = useRecoilState(todosAtom)
-
-    const colors: Map<string, string> = new Map()
-    colors.set("Pending", "red-400")
-    colors.set("Started", "yellow-300")
-    colors.set("Done", "green-400")
-    colors.set("High", "red-400")
-    colors.set("Moderate", "yellow-300")
-    colors.set("Normal", "green-400")
 
     return <div className="flex flex-col items-center subpixel-antialiased border-4 border-yellow-100 hover:border-cyan-300 shadow-2xl shadow-sky-200 hover:shadow-sky-400 h-max w-56 ml-6 my-7 rounded-2xl">
         <div className="w-full rounded-xl bg-white">
@@ -45,7 +38,7 @@ const TodoCard = ({ id, title, status, priority, dueDate }: {
                 </div>
                 <div>
                     <Heading text={"due date"} />
-                    <div className="text-xs text-center pb-1 text-slate-500">
+                    <div className="text-xs text-center py-1 text-slate-500">
                         {dueDate}
                     </div>
                 </div>

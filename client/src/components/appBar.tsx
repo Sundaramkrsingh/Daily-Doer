@@ -15,7 +15,7 @@ const AppBar = () => {
         </div> 
         <div className="flex w-full">
             <div className="flex md:w-1/2 sm:w-64 w-56 text-white">
-                <AppBarContent text={"About us"} redirectPage={"about"} />
+                <AppBarContent text={"About"} redirectPage={"about"} />
                 {
                     user.email === ""? <div></div>:
                     <AppBarContent text={"my todos"} redirectPage={"todos"} />                

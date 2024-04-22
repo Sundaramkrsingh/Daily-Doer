@@ -19,8 +19,8 @@ const SignUp = () => {
             .catch(err => console.log(err)) 
     }, [])
 
-    return <div className="grid grid-cols-2">
-        <div>
+    return <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="hidden md:block">
             <Quote />
         </div>
         <div>

@@ -20,12 +20,12 @@ const AddTodo = () => {
         axios.get(`${BACKEND_URL}/user/`)
             .then(res => {
                 if(!res.data.valid) {
-                    navigate('/signin')
                     setUser({
                         userId: 0,
                         name: "",
                         email: ""
                     })
+                    navigate('/signin')
                     sessionStorage.clear()
                 } else {
                     const userString = sessionStorage.getItem("user")
