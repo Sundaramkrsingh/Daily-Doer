@@ -1,5 +1,5 @@
 import express from 'express'
-import { createTodoInput, updateTodoInput } from '../../../common/dist'
+import { createTodoInput, updateTodoInput } from '@sundaram_11/daily-doer'
 import { PrismaClient } from '@prisma/client'
 import dotenv from 'dotenv'
 

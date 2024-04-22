@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const dist_1 = require("../../../common/dist");
+const daily_doer_1 = require("@sundaram_11/daily-doer");
 const client_1 = require("@prisma/client");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const express_session_1 = __importDefault(require("express-session"));
@@ -44,7 +44,7 @@ userRouter.get('/', (req, res) => {
 userRouter.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const body = req.body;
-        const validate = dist_1.signupInput.safeParse(body);
+        const validate = daily_doer_1.signupInput.safeParse(body);
         if (!validate.success) {
             res.status(411);
             return res.json({
@@ -92,7 +92,7 @@ userRouter.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, funct
 userRouter.post('/signin', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const body = req.body;
-        const validate = dist_1.signinInput.safeParse(body);
+        const validate = daily_doer_1.signinInput.safeParse(body);
         if (!validate.success) {
             res.status(411);
             return res.json({

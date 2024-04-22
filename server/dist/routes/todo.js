@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const dist_1 = require("../../../common/dist");
+const daily_doer_1 = require("@sundaram_11/daily-doer");
 const client_1 = require("@prisma/client");
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
@@ -21,7 +21,7 @@ const todoRouter = (0, express_1.default)();
 const prisma = new client_1.PrismaClient();
 todoRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
-    const validate = dist_1.createTodoInput.safeParse(body);
+    const validate = daily_doer_1.createTodoInput.safeParse(body);
     if (!validate.success) {
         return res.status(411).json({
             msg: "Invalid Inputs"
@@ -52,7 +52,7 @@ todoRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* (
 }));
 todoRouter.put('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
-    const validate = dist_1.updateTodoInput.safeParse(body);
+    const validate = daily_doer_1.updateTodoInput.safeParse(body);
     if (!validate.success) {
         return res.status(403).json({
             msg: "Invalid Inputs"

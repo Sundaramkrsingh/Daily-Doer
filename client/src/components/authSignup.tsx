@@ -3,7 +3,7 @@ import AuthButton from "./buttons/authButton"
 import InputBox from "./inputBox"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
-import { SignupInput } from '../../../common/dist'
+import { SignupInput } from "@sundaram_11/daily-doer"
 import { useNavigate } from "react-router-dom"
  
 const AuthSignup = () => {

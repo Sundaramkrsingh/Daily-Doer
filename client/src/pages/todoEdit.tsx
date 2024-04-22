@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { useRecoilState } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import InputBox from "../components/inputBox"
 import SelectBox from "../components/selectBox"
 import AuthButton from "../components/buttons/authButton"
@@ -11,7 +11,7 @@ import { BACKEND_URL } from "../config"
 import { curTodoAtom } from "../store/atoms/view-edit-Todo"
 
 const TodoEdit = () => {
-    const [user, setUser] = useRecoilState(userAtom)
+    const setUser = useSetRecoilState(userAtom)
     const navigate = useNavigate()
     const { todoId } = useParams()
     const [todo, setTodo] = useRecoilState(curTodoAtom)

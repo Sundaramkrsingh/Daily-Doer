@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom"
-import { useRecoilState } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil"
 import { userAtom } from "../store/atoms/user"
 import { useEffect } from "react"
 import axios from "axios"
@@ -8,7 +8,7 @@ import { curTodoAtom } from "../store/atoms/view-edit-Todo"
 import { colors } from "../store/utils/colors"
 
 const TodoView = () => {
-    const [user, setUser] = useRecoilState(userAtom)
+    const setUser = useSetRecoilState(userAtom)
     const navigate = useNavigate()
     const { todoId } = useParams()
     const [todo, setTodo] = useRecoilState(curTodoAtom)

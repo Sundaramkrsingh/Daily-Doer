@@ -1,5 +1,5 @@
 import express from 'express'
-import { signinInput, signupInput } from '../../../common/dist'
+import { signinInput, signupInput } from '@sundaram_11/daily-doer'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
 import session from 'express-session'

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import AuthButton from "./buttons/authButton"
 import InputBox from "./inputBox"
-import { SigninInput } from "../../../common/dist"
+import { SigninInput } from "@sundaram_11/daily-doer"
 import { Link, useNavigate } from "react-router-dom"
 import axios from "axios"
 import { BACKEND_URL } from "../config"

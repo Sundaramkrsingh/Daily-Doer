@@ -1,8 +1,8 @@
 {
-  "name": "common",
+  "name": "@sundaram_11/daily-doer",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A Todo app, defined signin, signup, create-todo, update-todo types but only used singin and signup types",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -b"

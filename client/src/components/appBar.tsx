@@ -7,7 +7,6 @@ import { userAtom } from "../store/atoms/user"
 
 const AppBar = () => {
     const [user, setUser] = useRecoilState(userAtom)
-    console.log(user)
 
     return <div className="sticky top-0 flex border-b-2 shadow-md bg-gradient-to-l from-red-100 to-sky-500 bg-gradient-to-r from-yellow-200 w-screen">
         <div className="md:max-w-28 max-w-14 border-r cursor-pointer">
