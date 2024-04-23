@@ -1,9 +1,6 @@
 import express from 'express'
 import { createTodoInput, updateTodoInput } from '@sundaram_11/daily-doer'
 import { PrismaClient } from '@prisma/client'
-import dotenv from 'dotenv'
-
-dotenv.config();
 
 const todoRouter = express()
 const prisma = new PrismaClient()

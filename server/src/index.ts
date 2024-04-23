@@ -5,7 +5,6 @@ import userRouter from './routes/user'
 import todoRouter from './routes/todo'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
-import dotenv from 'dotenv'
 
 declare module 'express-session' {
     interface SessionData {
@@ -17,7 +16,6 @@ declare module 'express-session' {
     }
 }
 
-dotenv.config();
 const PORT = process.env.PORT 
 const app = express()
 

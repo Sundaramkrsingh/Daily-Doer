@@ -15,8 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const daily_doer_1 = require("@sundaram_11/daily-doer");
 const client_1 = require("@prisma/client");
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
 const todoRouter = (0, express_1.default)();
 const prisma = new client_1.PrismaClient();
 todoRouter.post('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {

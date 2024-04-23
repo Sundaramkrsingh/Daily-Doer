@@ -17,8 +17,6 @@ const daily_doer_1 = require("@sundaram_11/daily-doer");
 const client_1 = require("@prisma/client");
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const express_session_1 = __importDefault(require("express-session"));
-const dotenv_1 = __importDefault(require("dotenv"));
-dotenv_1.default.config();
 const prisma = new client_1.PrismaClient();
 const SESSION_SECRET = process.env.SESSION_SECRET || "";
 const userRouter = (0, express_1.default)();

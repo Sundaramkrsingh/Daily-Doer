@@ -3,9 +3,7 @@ import { signinInput, signupInput } from '@sundaram_11/daily-doer'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt'
 import session from 'express-session'
-import dotenv from 'dotenv'
 
-dotenv.config();
 const prisma = new PrismaClient()
 const SESSION_SECRET = process.env.SESSION_SECRET || ""
 
