@@ -39,4 +39,4 @@ jobs:
           sudo docker pull sundaram11/daily-doer:latest
           sudo docker stop daily-doer || true
           sudo docker rm daily-doer || true
-          sudo docker run -d --name daily-doer -p 3001:3001 -e DATABASE_URL="postgresql://sundaramsinghsdnr:e06NAUydGEVK@ep-rapid-lake-92951150.us-east-2.aws.neon.tech/dbdobby?sslmode=require" -e SESSION_SECRET="sundaram-todoApp-secret" -e PORT=3001 sundaram11/daily-doer:latest
+          sudo docker run -d --name daily-doer -p 3001:3001 -e DATABASE_URL=${{ env.DATABASE_URL }} -e SESSION_SECRET=${{ secrets.SESSION_SECRET }} -e PORT=${{ env.PORT }} sundaram11/daily-doer:latest
