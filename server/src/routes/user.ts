@@ -14,10 +14,15 @@ userRouter.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: false,
-        maxAge: 1000 * 60 * 60 * 24
+        secure: false, // Set to false for localhost development
+        httpOnly: true,
+        sameSite: 'lax', // none
+        maxAge: 1000 * 60 * 60 * 24, 
+        domain: 'localhost', 
+        path: '/'
     }
-}))
+}));
+
 
 userRouter.get('/', (req, res) => {
     if(req.session && req.session.user) {
