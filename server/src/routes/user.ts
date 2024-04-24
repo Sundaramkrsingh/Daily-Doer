@@ -14,7 +14,7 @@ userRouter.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: true, // Set to true if your application is served over HTTPS
+        secure: false,
         httpOnly: true,
         sameSite: 'none', // Adjust as needed for your application's requirements
         maxAge: 1000 * 60 * 60 * 24, // Maximum age of the cookie (in milliseconds), adjust as needed
