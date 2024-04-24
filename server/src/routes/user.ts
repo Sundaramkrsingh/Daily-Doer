@@ -15,13 +15,9 @@ userRouter.use(session({
     saveUninitialized: false,
     cookie: {
         secure: false,
-        httpOnly: true,
-        sameSite: 'none', // Adjust as needed for your application's requirements
-        maxAge: 1000 * 60 * 60 * 24, // Maximum age of the cookie (in milliseconds), adjust as needed
-        domain: 'localhost', 
-        path: '/', // Specify the path for the cookie
+        maxAge: 1000 * 60 * 60 * 24
     }
-}));
+})) 
 
 
 userRouter.get('/', (req, res) => {
