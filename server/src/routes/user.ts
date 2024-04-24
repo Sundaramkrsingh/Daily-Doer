@@ -21,7 +21,8 @@ userRouter.use(session({
         domain: 'localhost', 
         path: '/', // Specify the path for the cookie
     }
-}))
+}));
+
 
 userRouter.get('/', (req, res) => {
     if(req.session && req.session.user) {
