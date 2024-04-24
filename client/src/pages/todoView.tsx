@@ -16,11 +16,11 @@ const TodoView = () => {
     
     useEffect(() => {
         axios.get(`${BACKEND_URL}/user/`)
-            .then(res => {
+            .then(async res => {
                 if(res.data.valid) {
                     const userString = sessionStorage.getItem("user")
                     const defaultString = JSON.stringify({ userId: 0, name: "", email: "" })
-                    const userData = JSON.parse(userString || defaultString)
+                    const userData = await JSON.parse(userString || defaultString)
                     setUser(userData)
                 } else {
                     setUser({

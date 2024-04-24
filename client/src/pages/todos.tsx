@@ -16,7 +16,7 @@ const Todos = () => {
 
     useEffect(() => {
         axios.get(`${BACKEND_URL}/user/`)
-            .then(res => {
+            .then(async res => {
                 if(!res.data.valid) {
                     navigate('/signin')
                     setUser({
@@ -28,7 +28,7 @@ const Todos = () => {
                 } else {
                     const userString = sessionStorage.getItem("user")
                     const defaultString = JSON.stringify({ userId: 0, name: ""})
-                    const userData = JSON.parse(userString || defaultString)
+                    const userData = await JSON.parse(userString || defaultString)
                     setUser(userData)
                 }
             })

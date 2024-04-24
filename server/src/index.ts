@@ -6,16 +6,6 @@ import todoRouter from './routes/todo'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 
-declare module 'express-session' {
-    interface SessionData {
-        user?: {
-            userId: number,
-            name: string,
-            email: string
-        } 
-    }
-}
-
 const app = express()
 
 app.use(cors({
