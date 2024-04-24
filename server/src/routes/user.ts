@@ -22,7 +22,8 @@ userRouter.use(session({
 userRouter.get('/', (req, res) => {
     if(req.session && req.session.user) {
         return res.json({
-            valid: true
+            valid: true,
+            session: req.session
         })
     }
     

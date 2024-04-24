@@ -18,13 +18,15 @@ const LandingPage = () => {
                    const defaultString = JSON.stringify({ userId: 0, name: ""})
                    const userData = await JSON.parse(userString || defaultString)
                    setUser(userData)
+                   console.log(user)
+                   console.log(sessionStorage.getItem("user"))
                 } else {
                     setUser({
                         userId: 0,
                         name: "",
                         email: ""
                     })
-                   console.log(user)
+                    console.log(sessionStorage.getItem('user'))
                     sessionStorage.clear()
                 }
             })

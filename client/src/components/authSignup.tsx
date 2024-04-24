@@ -40,12 +40,10 @@ const AuthSignup = () => {
                         }))} />
                     </div>  
                     <div className="py-6">
-                        <AuthButton text={"signup"} onClick={() => {
+                        <AuthButton text={"signup"} onClick={async () => {
                             try {
-                                axios.post(`${BACKEND_URL}/user/signin`, signupInputs)
-                                    .then(res => {
-                                        sessionStorage.setItem("user", JSON.stringify(res.data.user))
-                                    })
+                                const res = await axios.post(`${BACKEND_URL}/user/signup`, signupInputs)
+                                sessionStorage.setItem("user", JSON.stringify(res.data.user))
                                 navigate('/')
                             } catch(e) {
                                 console.log(e)

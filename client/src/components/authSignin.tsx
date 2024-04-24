@@ -33,16 +33,14 @@ const AuthSignin = () => {
                         }))} />
                     </div>  
                     <div className="pt-6">
-                        <AuthButton text={"signin"} onClick={() => {
+                        <AuthButton text={"signin"} onClick={async () => {
                             try {
-                                axios.post(`${BACKEND_URL}/user/signin`, signinInputs)
-                                    .then(res => {
-                                        sessionStorage.setItem("user", JSON.stringify(res.data.user))
-                                    })
-                                    navigate('/')
+                                const res = await axios.post(`${BACKEND_URL}/user/signin`, signinInputs)
+                                sessionStorage.setItem("user", JSON.stringify(res.data.user))
+                                navigate('/')
                             } catch(e) {
                                 console.log(e)
-                                alert('Error while signing up')
+                                alert('Error while signing in')
                             }
                         }} />
                     </div>   
