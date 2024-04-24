@@ -36,7 +36,9 @@ const AuthSignin = () => {
                         <AuthButton text={"signin"} onClick={async () => {
                             try {
                                 const res = await axios.post(`${BACKEND_URL}/user/signin`, signinInputs)
+                                new Promise((resolve) => setTimeout(resolve, 50))
                                 sessionStorage.setItem("user", JSON.stringify(res.data.user))
+
                                 navigate('/')
                             } catch(e) {
                                 console.log(e)
