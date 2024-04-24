@@ -33,13 +33,13 @@ const AuthSignin = () => {
                         }))} />
                     </div>  
                     <div className="pt-6">
-                        <AuthButton text={"signin"} onClick={async () => {
+                        <AuthButton text={"signin"} onClick={() => {
                             try {
-                                const res = await axios.post(`${BACKEND_URL}/user/signin`, signinInputs)
-                                new Promise((resolve) => setTimeout(resolve, 50))
-                                sessionStorage.setItem("user", JSON.stringify(res.data.user))
-
-                                navigate('/')
+                                axios.post(`${BACKEND_URL}/user/signin`, signinInputs)
+                                    .then(res => {
+                                        sessionStorage.setItem("user", JSON.stringify(res.data.user))
+                                        navigate('/')
+                                    })
                             } catch(e) {
                                 console.log(e)
                                 alert('Error while signing in')

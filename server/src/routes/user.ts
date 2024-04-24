@@ -14,8 +14,12 @@ userRouter.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: false,
-        maxAge: 1000 * 60 * 60 * 24
+        secure: true, // Set to true if your application is served over HTTPS
+        httpOnly: true,
+        sameSite: 'none', // Adjust as needed for your application's requirements
+        maxAge: 1000 * 60 * 60 * 24, // Maximum age of the cookie (in milliseconds), adjust as needed
+        domain: 'localhost', 
+        path: '/', // Specify the path for the cookie
     }
 }))
 
