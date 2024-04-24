@@ -20,7 +20,7 @@ userRouter.use(session({
 }))
 
 userRouter.get('/', (req, res) => {
-    if(req.session) {
+    if(req.session && req.session.user) {
         return res.json({
             valid: true
         })
@@ -62,6 +62,12 @@ userRouter.post('/signup', async (req, res) => {
                 password: hashedPassword
             }
         })
+
+        req.session.user = {
+            userId: user.id,
+            email: user.email,
+            name: user.name,
+        }
 
         res.status(200)
         return res.json({
@@ -107,6 +113,12 @@ userRouter.post('/signin', async (req, res) => {
             return res.status(403).json({
                 msg: "Incorrect password"
             })
+        }
+
+        req.session.user = {
+            userId: user.id,
+            name: user.name,
+            email: user.email
         }
 
         return res.status(200).json({
