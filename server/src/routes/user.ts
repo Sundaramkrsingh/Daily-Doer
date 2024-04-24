@@ -133,7 +133,8 @@ userRouter.post('/signin', async (req, res) => {
                 userId: user.id,
                 email: user.email,
                 name: user.name
-            }
+            },
+            session: req.session
         })
     } catch(e) {
         console.log(e) 
