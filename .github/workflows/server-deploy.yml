@@ -2,6 +2,8 @@ name: Backend build and Deploy
 
 on: 
   push:
+    paths: 
+      - 'server/**'
     branches: 
       - main
 
